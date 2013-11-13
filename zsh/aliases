@@ -1,0 +1,48 @@
+# Handle the fact that this file will be used with multiple OSs
+platform=`uname`
+if [[ $platform == 'Linux' ]]; then
+  alias a='ls -lrth --color'
+elif [[ $platform == 'Darwin' ]]; then
+  alias a='ls -lrthG'
+fi
+
+alias aliases='vim ~/.dotfiles/zsh/aliases'
+
+# FILE PATH ALIASES
+alias db='cd ~/Dropbox'
+alias u='cd ..'
+
+# HEROKU ALIASES
+alias staging-console='heroku run console -r staging'
+alias sc='staging-console'
+alias staging-logs='heroku logs -r staging -t'
+alias sl='staging-logs'
+alias production-console='heroku run console -r production'
+alias pc='production-console'
+alias production-logs='heroku logs -r production -t'
+alias pl='production-logs'
+
+# GIT ALIASES
+alias amend="git commit --amend"
+alias ga='git add -A'
+alias gbc='gdc'
+alias gcam='git commit -am'
+alias gcaa='git commit -a --amend -C HEAD'
+alias gcl='git clone'
+alias gcm="git commit -m"
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdm='git diff master'
+alias safepush='git pull --rebase && bundle install && git push'
+
+# RUBY ALIASES
+alias bi='bundle install'
+alias be='bundle exec'
+alias bu='bundle update'
+alias fs='foreman start'
+
+
+# PROGRAM ALIASES
+alias startdrop='~/.dropbox-dlist/dropboxd'
+
