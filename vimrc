@@ -25,13 +25,24 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-cucumber'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " javascript
 Bundle 'kchmck/vim-coffee-script'
 
+" elixir
+Bundle 'elixir-lang/vim-elixir'
+
+" clojure
+Bundle 'tpope/vim-foreplay'
+Bundle 'tpope/vim-classpath'
+Bundle 'guns/vim-clojure-static'
+
 " editor
 Bundle 'tpope/vim-surround'
 Bundle 'ervandew/supertab'
+Bundle 'kien/ctrlp.vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-endwise'
@@ -39,14 +50,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'myusuf3/numbers.vim'
-Bundle 'kien/ctrlp.vim'
 Bundle 'koron/nyancat-vim'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'tpope/vim-foreplay'
-Bundle 'tpope/vim-classpath'
-Bundle 'guns/vim-clojure-static'
 
 " =============================================================================
 " initialization
