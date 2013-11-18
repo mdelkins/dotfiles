@@ -31,14 +31,6 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " javascript
 Bundle 'kchmck/vim-coffee-script'
 
-" elixir
-Bundle 'elixir-lang/vim-elixir'
-
-" clojure
-Bundle 'tpope/vim-foreplay'
-Bundle 'tpope/vim-classpath'
-Bundle 'guns/vim-clojure-static'
-
 " editor
 Bundle 'tpope/vim-surround'
 Bundle 'ervandew/supertab'
@@ -51,6 +43,8 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'koron/nyancat-vim'
+Bundle 'ggreer/the_silver_searcher'
+Bundle 'Syntastic'
 
 " =============================================================================
 " initialization
@@ -58,6 +52,8 @@ Bundle 'koron/nyancat-vim'
 
 " clear autocmds
 autocmd!
+
+execute pathogen#infect()
 
 " use vim settings, instead of vi settings (default when a vimrc exists)
 set nocompatible
