@@ -45,6 +45,7 @@ Bundle 'myusuf3/numbers.vim'
 Bundle 'koron/nyancat-vim'
 Bundle 'ggreer/the_silver_searcher'
 Bundle 'Syntastic'
+Bundle 'duff/vim-scratch'
 
 " =============================================================================
 " initialization
@@ -57,9 +58,40 @@ execute pathogen#infect()
 
 " use vim settings, instead of vi settings (default when a vimrc exists)
 set nocompatible
+set hidden
+
+" remember more commands and search history
+set history=10000
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set laststatus=2
+set showmatch
+set incsearch
+set hlsearch
+
+" make searches case-sensitive only if they contain upper-case characters
+set ignorecase smartcase
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
 
 " enable file type detection
+syntax on
 filetype plugin indent on
+
+" set tabs for file types
+augroup myfiletypes
+  " clear old auto comds in group
+  autocmd!
+
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml,javascript,sass,cumber,haml setlocal ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml setlocal path+=lib
+augroup END
 
 " load vimrc from current directory and disable unsafe commands in them
 set exrc
@@ -70,6 +102,35 @@ set encoding=utf-8 nobomb
 
 " set comma ast <leader> instead of default backslash
 let mapleader=','
+
+
+"custom leader commands
+map  <leader>ac  :sp app/controllers/application_controller.rb<cr>
+map  <leader>bb  :!bundle install<cr>
+nmap <leader>bi  :source ~/.vimrc<cr>:BundleInstall<cr>
+map  <leader>gst :Gstatus<cr>
+map  <leader>gv  :ClearCtrlPCache<cr>\|:CtrlP app/views<cr>
+map  <leader>gc  :ClearCtrlPCache<cr>\|:CtrlP app/controllers<cr>
+map  <leader>gm  :ClearCtrlPCache<cr>\|:CtrlP app/models<cr>
+map  <leader>gl  :ClearCtrlPCache<cr>\|:CtrlP lib<cr>
+map  <leader>gj  :ClearCtrlPCache<cr>\|:CtrlP app/assets/javascript<cr>
+map  <leader>gs  :ClearCtrlPCache<cr>\|:CtrlP app/assets/stylesheets<cr>
+map  <leader>gg  :topleft 100 :split Gemfile<cr>
+map <leader>gr :topleft :split config/routes.rb<cr>
+function! ShowRoutes()
+    :topleft 100 :split __Routes__
+    :set buftype=nofile
+    :normal 1GdG
+    :0r! rake -s routes
+    :exec ":normal " .line$("$") . "_ "
+    :normal 1GG
+    :normal dd
+endfunction
+
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " =============================================================================
 " appearance
