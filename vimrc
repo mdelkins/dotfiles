@@ -112,9 +112,14 @@ map  <leader>gst :Gstatus<cr>
 map  <leader>gv  :ClearCtrlPCache<cr>\|:CtrlP app/views<cr>
 map  <leader>gc  :ClearCtrlPCache<cr>\|:CtrlP app/controllers<cr>
 map  <leader>gm  :ClearCtrlPCache<cr>\|:CtrlP app/models<cr>
+map  <leader>gmm :ClearCtrlPCache<cr>\|:CtrlP app/mailers<cr>
+map  <leader>gb  :ClearCtrlPCache<cr>\|:CtrlP app/behaviors<cr>
+map  <leader>gd  :ClearCtrlPCache<cr>\|:CtrlP app/decorators<cr>
 map  <leader>gl  :ClearCtrlPCache<cr>\|:CtrlP lib<cr>
 map  <leader>gj  :ClearCtrlPCache<cr>\|:CtrlP app/assets/javascript<cr>
+map  <leader>gjb :ClearCtrlPCache<cr>\|:CtrlP app/jobs<cr>
 map  <leader>gs  :ClearCtrlPCache<cr>\|:CtrlP app/assets/stylesheets<cr>
+map  <leader>gsp :ClearCtrlPCache<cr>\|:CtrlP app/specifications<cr>
 map  <leader>gg  :topleft 100 :split Gemfile<cr>
 map <leader>gr :topleft :split config/routes.rb<cr>
 function! ShowRoutes()
