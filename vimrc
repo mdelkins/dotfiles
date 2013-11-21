@@ -19,7 +19,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " color schemes
-Bundle 'flazz/vim-colorschemes'
+Bundle 'noah/vim256-color'
 
 " ruby
 Bundle 'vim-ruby/vim-ruby'
@@ -148,7 +148,7 @@ set title            " Show the filename in the window titlebar
 set t_Co=256         " 256 colors
 set background=dark  " Dark background
 syntax on            " Enable syntax highlighting
-colorscheme obsidian " Set the default colorscheme
+color xoria256       " Set the default colorscheme
 set noerrorbells     " Disable error bells
 set shortmess=atI    " Don't show the Vim intro message
 set number           " Show line numbers
