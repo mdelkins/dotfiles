@@ -46,6 +46,7 @@ Bundle 'koron/nyancat-vim'
 Bundle 'ggreer/the_silver_searcher'
 Bundle 'Syntastic'
 Bundle 'duff/vim-scratch'
+Bundle 'roman/golden-ratio'
 
 " =============================================================================
 " initialization
@@ -77,7 +78,6 @@ set hlsearch
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 
-set cursorline
 set cmdheight=1
 set switchbuf=useopen
 set showtabline=2
