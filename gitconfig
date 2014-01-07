@@ -1,0 +1,32 @@
+[user]
+	name        = Michael Elkins
+	email       = melkins@daxko.com
+[credential]
+	helper      = osxkeychain
+[diff]
+[color]
+    ui          = auto
+[alias]
+    st          = status
+    ci          = commit
+    co          = checkout
+    di          = diff
+    dc          = diff --cached
+    amend       = commit --amend    
+    aa          = add -A
+    ff          = merge --ff-only
+    pro         = pull --rebase origin
+    pru         = pull --rebase upstream
+    b           = branch
+    po          = push origin
+    pu          = push upstream
+    dh1         = diff HEAD~1
+    head        = !git l -1
+    h           = !git head
+    hp          = "!source ~/.githelpers && show_git_head"
+    r           = !git l -30
+    ra          = !git r --all 
+    l           = "!source ~/.githelpers && pretty_git_log"
+    la          = !git l --all
+[merge]
+    tool        = vimdiff
