@@ -25,8 +25,9 @@ alias pl='production-logs'
 # GIT ALIASES
 alias amend="git commit --amend"
 alias ga='git add -A'
+alias gst='git status'
 alias gbc='gdc'
-alias gcam='git commit -am'
+alias gci='git commit -am'
 alias gcaa='git commit -a --amend -C HEAD'
 alias gcl='git clone'
 alias gcm="git commit -m"
@@ -42,7 +43,5 @@ alias be='bundle exec'
 alias bu='bundle update'
 alias fs='foreman start'
 
-
 # PROGRAM ALIASES
 alias startdrop='~/.dropbox-dlist/dropboxd'
-

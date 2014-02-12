@@ -33,6 +33,10 @@ Bundle 'kchmck/vim-coffee-script'
 
 " editor
 Bundle 'tpope/vim-surround'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
 Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomtom/tcomment_vim'
@@ -179,7 +183,7 @@ set title             " Show the filename in the window titlebar
 set t_Co=256          " 256 colors
 set background=light  " Dark background
 syntax on             " Enable syntax highlighting
-colorscheme beauty256 " Set the default colorscheme
+colorscheme 256_automation      " Set the default colorscheme
 set noerrorbells      " Disable error bells
 set shortmess=atI     " Don't show the Vim intro message
 set number            " Show line numbers

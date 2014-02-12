@@ -1,0 +1,20 @@
+function git-new-remote-tracking {
+  git checkout -b $1 && git push -u origin $1
+}
+
+function git_branch_name {
+  val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
+}
+
+
+function git-nuke {
+  git branch -D $1 && git push origin :$1
+}
+
+function g {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
