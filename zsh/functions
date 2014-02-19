@@ -4,6 +4,7 @@ function git-new-remote-tracking {
 
 function git_branch_name {
   val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
+  echo "$val"
 }
 
 

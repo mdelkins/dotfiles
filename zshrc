@@ -1,6 +1,8 @@
 HISTSIZE=20000
 HISTFILE=~/.zsh_history
 SAVEHIST=20000
+autoload -U colors
+colors
 
 source $HOME/.dotfiles/zsh/aliases
 source $HOME/.dotfiles/zsh/functions

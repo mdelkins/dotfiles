@@ -137,7 +137,7 @@ map  <leader>gv  :ClearCtrlPCache<cr>\|:CtrlP app/views<cr>
 map  <leader>gc  :ClearCtrlPCache<cr>\|:CtrlP app/controllers<cr>
 map  <leader>gm  :ClearCtrlPCache<cr>\|:CtrlP app/models<cr>
 map  <leader>gb  :ClearCtrlPCache<cr>\|:CtrlP app/behaviors<cr>
-map  <leader>gd  :ClearCtrlPCache<cr>\|:CtrlP app/decorators<cr>
+map  <leader>gd  :ClearCtrlPCache<cr>\|:CtrlP app/domain<cr>
 map  <leader>gl  :ClearCtrlPCache<cr>\|:CtrlP lib<cr>
 map  <leader>ga  :ClearCtrlPCache<cr>\|:CtrlP app/assets<cr>
 map  <leader>gs  :ClearCtrlPCache<cr>\|:CtrlP app/specifications<cr>
