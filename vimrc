@@ -133,14 +133,14 @@ map  <leader>ac  :sp app/controllers/application_controller.rb<cr>
 map  <leader>bb  :!bundle install<cr>
 nmap <leader>bi  :source ~/.vimrc<cr>:BundleInstall<cr>
 map  <leader>gst :Gstatus<cr>
-map  <leader>gv  :ClearCtrlPCache<cr>\|:CtrlP app/views<cr>
-map  <leader>gc  :ClearCtrlPCache<cr>\|:CtrlP app/controllers<cr>
-map  <leader>gm  :ClearCtrlPCache<cr>\|:CtrlP app/models<cr>
-map  <leader>gb  :ClearCtrlPCache<cr>\|:CtrlP app/behaviors<cr>
-map  <leader>gd  :ClearCtrlPCache<cr>\|:CtrlP app/domain<cr>
-map  <leader>gl  :ClearCtrlPCache<cr>\|:CtrlP lib<cr>
-map  <leader>ga  :ClearCtrlPCache<cr>\|:CtrlP app/assets<cr>
-map  <leader>gs  :ClearCtrlPCache<cr>\|:CtrlP app/specifications<cr>
+map  <leader>gv  :CtrlP app/views<cr>
+map  <leader>gc  :CtrlP app/controllers<cr>
+map  <leader>gm  :CtrlP app/models<cr>
+map  <leader>gb  :CtrlP app/behaviors<cr>
+map  <leader>gd  :CtrlP app/domain<cr>
+map  <leader>gl  :CtrlP lib<cr>
+map  <leader>ga  :CtrlP app/assets<cr>
+map  <leader>gs  :CtrlP app/specifications<cr>
 map  <leader>gg  :topleft 100 :split Gemfile<cr>
 map  <leader>gr  :topleft :split config/routes.rb<cr>
 
@@ -158,8 +158,14 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 imap <c-l> <space>=><space>
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+nnoremap \ :Ag<SPACE>
 
 function! RenameFile()
     let old_name = expand('%')
@@ -192,6 +198,18 @@ set number            " Show line numbers
 if exists("&relativenumber")
   set relativenumber
 "  au BufReadPost * set relativenumber
+endif
+
+" Override grep infavor of the silver searcher
+if executable('ag')
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough to turn off CtrlP cache
+    let g:ctrlp_use_caching = 0
 endif
 
 "" status Line
