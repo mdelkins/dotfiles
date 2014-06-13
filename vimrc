@@ -68,6 +68,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 
+" use vims spell checking
+set spell
+
 " tab settings
 set expandtab
 set tabstop=4
