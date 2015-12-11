@@ -13,3 +13,5 @@
     la          = !git l --all
 [merge]
     tool        = vimdiff
+[core]
+	excludesfile = /Users/melkins/.gitignore_global

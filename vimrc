@@ -12,45 +12,54 @@
 " =============================================================================
 " vundle
 " =============================================================================
+set nocompatible
+filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
 
-Bundle 'gmarik/vundle'
+call vundle#begin()
 
-" color schemes
-Bundle 'noah/vim256-color'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-" ruby
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-cucumber'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
+" color plugins
+Plugin 'flazz/vim-colorschemes'
+
+" ruby plugins
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+
+" exlir plugins
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'mattreduce/vim-mix'
 
 " javascript
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
 
-" editor
-Bundle 'tpope/vim-surround'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
-Bundle 'ervandew/supertab'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'koron/nyancat-vim'
-Bundle 'ggreer/the_silver_searcher'
-Bundle 'Syntastic'
-Bundle 'duff/vim-scratch'
-Bundle 'roman/golden-ratio'
+" editor plugins
+Plugin 'tpope/vim-surround'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'Syntastic'
+Plugin 'duff/vim-scratch'
+Plugin 'roman/golden-ratio'
+
+call vundle#end()
+filetype plugin indent on
 
 " =============================================================================
 " initialization
@@ -127,6 +136,7 @@ set secure
 
 " use UTF-8 without BOM
 set encoding=utf-8 nobomb
+set spelllang=en_us
 
 " set comma ast <leader> instead of default backslash
 let mapleader=','
@@ -134,13 +144,14 @@ let mapleader=','
 "custom leader commands
 map  <leader>ac  :sp app/controllers/application_controller.rb<cr>
 map  <leader>bb  :!bundle install<cr>
-nmap <leader>bi  :source ~/.vimrc<cr>:BundleInstall<cr>
+nmap <leader>bi  :source ~/.vimrc<cr>:PluginInstall<cr>
+nmap <silent> <leader>s :set spell!<cr>
 map  <leader>gst :Gstatus<cr>
 map  <leader>gv  :CtrlP app/views<cr>
 map  <leader>gc  :CtrlP app/controllers<cr>
 map  <leader>gm  :CtrlP app/models<cr>
 map  <leader>gb  :CtrlP app/behaviors<cr>
-map  <leader>gd  :CtrlP app/domain<cr>
+map  <leader>gd  :CtrlP domain<cr>
 map  <leader>gl  :CtrlP lib<cr>
 map  <leader>ga  :CtrlP app/assets<cr>
 map  <leader>gs  :CtrlP app/specifications<cr>
@@ -190,9 +201,9 @@ set showtabline=2     " Always show the tab bar
 set cmdheight=1       " Set command line height (default)
 set title             " Show the filename in the window titlebar
 set t_Co=256          " 256 colors
-set background=light  " Dark background
+set background=dark   " Dark background
 syntax on             " Enable syntax highlighting
-colorscheme 256_automation      " Set the default colorscheme
+colorscheme github    " Set the default colorscheme
 set noerrorbells      " Disable error bells
 set shortmess=atI     " Don't show the Vim intro message
 set number            " Show line numbers
