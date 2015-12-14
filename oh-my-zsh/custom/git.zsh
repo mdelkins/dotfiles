@@ -1,6 +1,7 @@
 
 # GIT ALIAS
 
+alias amend='git commit --amend'
 alias g='git'
 alias ga='git add -A'
 alias gc='git commit -a'

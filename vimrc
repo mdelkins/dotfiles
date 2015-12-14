@@ -142,10 +142,10 @@ set spelllang=en_us
 let mapleader=','
 
 "custom leader commands
-map  <leader>ac  :sp app/controllers/application_controller.rb<cr>
-map  <leader>bb  :!bundle install<cr>
 nmap <leader>bi  :source ~/.vimrc<cr>:PluginInstall<cr>
 nmap <silent> <leader>s :set spell!<cr>
+map  <leader>ac  :sp app/controllers/application_controller.rb<cr>
+map  <leader>bb  :!bundle install<cr>
 map  <leader>gst :Gstatus<cr>
 map  <leader>gv  :CtrlP app/views<cr>
 map  <leader>gc  :CtrlP app/controllers<cr>
@@ -157,16 +157,6 @@ map  <leader>ga  :CtrlP app/assets<cr>
 map  <leader>gs  :CtrlP app/specifications<cr>
 map  <leader>gg  :topleft 100 :split Gemfile<cr>
 map  <leader>gr  :topleft :split config/routes.rb<cr>
-
-function! ShowRoutes()
-    :topleft 100 :split __Routes__
-    :set buftype=nofile
-    :normal 1GdG
-    :0r! rake -s routes
-    :exec ":normal " .line$("$") . "_ "
-    :normal 1GG
-    :normal dd
-endfunction
 
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -196,22 +186,21 @@ map <leader>n :call RenameFile()<cr>
 " appearance
 " =============================================================================
 
-set scrolloff=5       " Keep more buffer context when scrolling
-set showtabline=2     " Always show the tab bar
-set cmdheight=1       " Set command line height (default)
-set title             " Show the filename in the window titlebar
-set t_Co=256          " 256 colors
-set background=dark   " Dark background
-syntax on             " Enable syntax highlighting
-colorscheme github    " Set the default colorscheme
-set noerrorbells      " Disable error bells
-set shortmess=atI     " Don't show the Vim intro message
-set number            " Show line numbers
+set scrolloff=5         " Keep more buffer context when scrolling
+set showtabline=2       " Always show the tab bar
+set cmdheight=1         " Set command line height (default)
+set title               " Show the filename in the window titlebar
+set t_Co=256            " 256 colors
+set background=dark     " Dark background
+syntax on               " Enable syntax highlighting
+colorscheme babymate256 " Set the default colorscheme
+set noerrorbells        " Disable error bells
+set shortmess=atI       " Don't show the Vim intro message
+set number              " Show line numbers
 
 " Use relative line numbers - This is now handled by numbers.vim
 if exists("&relativenumber")
   set relativenumber
-"  au BufReadPost * set relativenumber
 endif
 
 " Override grep infavor of the silver searcher
