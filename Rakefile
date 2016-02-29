@@ -13,10 +13,14 @@ task :install do
   install_vundle
 
   act_on_these files do |action, file|
-    next replace file if action == 'y'
 
     if action == 'a'
       replace_all
+      replace file
+      next
+    end
+
+    if action == 'y'
       replace file
       next
     end
@@ -31,8 +35,6 @@ def act_on_these(files)
       link_this file
       next
     end
-
-    puts replace?
 
     if replace?
       replace file
