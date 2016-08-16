@@ -1,12 +1,12 @@
 
-function ccs() {
-  cd ~/workspace/airship/contracts/ccs
+function dashboard() {
+  cd ~/workspace/airship/contracts/dashboard
 }
 
 function fetch() {
   cd ~/workspace/airship/contracts/fetch
 } 
 
-function grow() {
+function highlands() {
   cd ~/workspace/airship/contracts/coh
 }

@@ -43,6 +43,9 @@ Plugin 'mattreduce/vim-mix'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
 
+" handlebars
+Plugin 'mustache/vim-mustache-handlebars'
+
 " editor plugins
 Plugin 'duff/vim-scratch'
 Plugin 'ervandew/supertab'
@@ -63,7 +66,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -118,6 +121,7 @@ let g:OmniSharp_selector_ui = 'ctrlp'
 let g:OmniSharp_timeout = 1
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_javascript_checkers = ['jsxhint']
+let g:mustache_abbreviations = 1
 
 set noshowmatch
 set completeopt=longest,menuone,preview
@@ -136,7 +140,7 @@ augroup myfiletypes
     \ endif
 
   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml,javascript,sass,cumber,haml setlocal ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml,javascript,sass,cumber,haml,html.handlebars setlocal ai sw=2 sts=2 et
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
   autocmd FileType python,cs set sw=4 sts=4 et
 
@@ -247,17 +251,17 @@ map <leader>n :call RenameFile()<cr>
 " appearance
 " =============================================================================
 
-set scrolloff=5        " Keep more buffer context when scrolling
-set showtabline=2      " Always show the tab bar
-set cmdheight=1        " Set command line height (default)
-set title              " Show the filename in the window titlebar
-set t_Co=256           " 256 colors
-set background=dark    " Dark background
-syntax on              " Enable syntax highlighting
-colorscheme heliotrope " Set the default colorscheme
-set noerrorbells       " Disable error bells
-set shortmess=atI      " Don't show the Vim intro message
-set number             " Show line numbers
+set scrolloff=5      " Keep more buffer context when scrolling
+set showtabline=2    " Always show the tab bar
+set cmdheight=1      " Set command line height (default)
+set title            " Show the filename in the window titlebar
+set t_Co=256         " 256 colors
+set background=dark  " Dark background
+syntax on            " Enable syntax highlighting
+colorscheme zazen    " Set the default colorscheme
+set noerrorbells     " Disable error bells
+set shortmess=atI    " Don't show the Vim intro message
+set number           " Show line numbers
 
 " Use relative line numbers - This is now handled by numbers.vim
 if exists("&relativenumber")
@@ -281,7 +285,6 @@ if has('statusline') && !&cp
   set laststatus=2                  " windows always have status line
   set statusline=%f\ %y\%m\%r       " filename [type][modified][readonly]
   set stl+=%{fugitive#statusline()} " git via fugitive.vim
-  " buffer number / buffer count
   set stl+=\[b%n/%{len(filter(range(1,bufnr('$')),'buflisted(v:val)'))}\]
   set stl+=\ %l/%L[%p%%]\,%v        " line/total[%],column
 endif
