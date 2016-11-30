@@ -145,6 +145,7 @@ augroup myfiletypes
   autocmd FileType python,cs set sw=4 sts=4 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass
+  autocmd! BufRead,BufNewFile *.scss setfiletype sass
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd! FileType mkd setlocal syn=off
