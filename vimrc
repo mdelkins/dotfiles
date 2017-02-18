@@ -257,7 +257,7 @@ set showtabline=2    " Always show the tab bar
 set cmdheight=1      " Set command line height (default)
 set title            " Show the filename in the window titlebar
 set t_Co=256         " 256 colors
-set background=dark  " Dark background
+set background=light " Light background
 syntax on            " Enable syntax highlighting
 colorscheme zazen    " Set the default colorscheme
 set noerrorbells     " Disable error bells

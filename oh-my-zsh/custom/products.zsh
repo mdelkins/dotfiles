@@ -9,3 +9,7 @@ funciton adhesives() {
 function force-athlete() {
   cd ~/workspace/airship/products/force-athlete/$1
 }
+
+function foundry() {
+  cd ~/workspace/airship/products/foundry/$1
+}
