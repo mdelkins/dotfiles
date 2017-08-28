@@ -42,6 +42,12 @@ Plugin 'mattreduce/vim-mix'
 " javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'posva/vim-vue'
+
+" typescript
+Plugin 'leafgarland/typescript-vim'
+Plugin 'HerringtonDarkholme/yats.vim'
 
 " handlebars
 Plugin 'mustache/vim-mustache-handlebars'
@@ -57,6 +63,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'roman/golden-ratio'
 Plugin 'Syntastic'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-bundler'
@@ -122,6 +129,10 @@ let g:OmniSharp_timeout = 1
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_javascript_checkers = ['jsxhint']
 let g:mustache_abbreviations = 1
+let jshint2_read = 1
+let jshint2_save = 1
+let jshint2_close = 0
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 set noshowmatch
 set completeopt=longest,menuone,preview
@@ -140,7 +151,8 @@ augroup myfiletypes
     \ endif
 
   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml,javascript,sass,cumber,haml,html.handlebars setlocal ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml,javascript,sass,cucumber,haml,html,handlebars setlocal ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml,javascript,sass,cucumber,haml,html,handlebars autocmd BufWritePre <buffer> %s/\s\+$//e
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
   autocmd FileType python,cs set sw=4 sts=4 et
 
@@ -149,9 +161,6 @@ augroup myfiletypes
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd! FileType mkd setlocal syn=off
-
-  "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-  autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 
   "show type information automatically when the cursor stops moving
   autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
@@ -193,16 +202,17 @@ nmap <silent> <leader>s :set spell!<cr>
 map  <leader>ac  :sp app/controllers/application_controller.rb<cr>
 map  <leader>bb  :!bundle install<cr>
 map  <leader>gst :Gstatus<cr>
-map  <leader>gv  :CtrlP app/views<cr>
-map  <leader>gc  :CtrlP app/controllers<cr>
-map  <leader>gm  :CtrlP app/models<cr>
-map  <leader>gb  :CtrlP app/behaviors<cr>
-map  <leader>gd  :CtrlP domain<cr>
-map  <leader>gl  :CtrlP lib<cr>
 map  <leader>ga  :CtrlP app/assets<cr>
-map  <leader>gs  :CtrlP app/specifications<cr>
+map  <leader>gb  :CtrlP app/behaviors<cr>
+map  <leader>gc  :CtrlP app/controllers<cr>
+map  <leader>gd  :CtrlP app/commands<cr>
 map  <leader>gg  :topleft 100 :split Gemfile<cr>
+map  <leader>gl  :CtrlP lib<cr>
+map  <leader>gm  :CtrlP app/models<cr>
+map  <leader>gp  :CtrlP app/javascript/packs<cr>
 map  <leader>gr  :topleft :split config/routes.rb<cr>
+map  <leader>gs  :CtrlP app/services<cr>
+map  <leader>gv  :CtrlP app/views<cr>
 
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -257,9 +267,9 @@ set showtabline=2    " Always show the tab bar
 set cmdheight=1      " Set command line height (default)
 set title            " Show the filename in the window titlebar
 set t_Co=256         " 256 colors
-set background=light " Light background
+set background=dark  " Light background
 syntax on            " Enable syntax highlighting
-colorscheme zazen    " Set the default colorscheme
+colorscheme grb256   " Set the default colorscheme
 set noerrorbells     " Disable error bells
 set shortmess=atI    " Don't show the Vim intro message
 set number           " Show line numbers

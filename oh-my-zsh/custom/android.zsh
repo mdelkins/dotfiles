@@ -1,3 +1,3 @@
 export ANDROID_HOME=/Users/mike/Library/Android/sdk/
-export PATH=${PATH}:/Users/mike/Library/Android/sdk/platform-tools:/Users/mike/Library/Android/sdk/tools:/Users/mike/Library/Android/sdk/build-tools/25.0.0
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/25.0.0
 
