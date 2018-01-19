@@ -76,7 +76,7 @@ end
 def install_oh_my_zsh
   unless File.exist? File.join(ENV['HOME'], '.oh-my-zsh')
     puts "installing oh-my-zsh"
-    system %Q{$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)}
+    system %Q{$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)}
   end
 
   puts "installing oh-my-zsh plugins"

@@ -3,4 +3,7 @@ function dotfiles {
   cd ~/.dotfiles
 }
 
-alias vim mvim -v
+unsetopt auto_pushd
+unsetopt pushd_ignore_dups
+
+#alias vim='mvim -v'

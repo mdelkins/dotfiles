@@ -24,7 +24,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " color plugins
-Plugin 'flazz/vim-colorschemes'
+Plugin 'noah/vim256-color'
+Plugin 'godlygeek/csapprox'
 
 " ruby plugins
 Plugin 'kana/vim-textobj-user'
@@ -34,6 +35,7 @@ Plugin 'vim-ruby/vim-ruby'
 
 " csharp plugins
 Plugin 'OrangeT/vim-csharp'
+Plugin 'OmniSharp/omnisharp-vim'
 
 " exlir plugins
 Plugin 'elixir-lang/vim-elixir'
@@ -56,14 +58,12 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'duff/vim-scratch'
 Plugin 'ervandew/supertab'
 Plugin 'garbas/vim-snipmate'
-Plugin 'godlygeek/csapprox'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'roman/golden-ratio'
 Plugin 'Syntastic'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-bundler'
@@ -74,6 +74,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
+Plugin 'vim-scripts/LanguageTool'
 
 call vundle#end()
 filetype plugin indent on
@@ -133,10 +134,10 @@ let jshint2_read = 1
 let jshint2_save = 1
 let jshint2_close = 0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 set noshowmatch
 set completeopt=longest,menuone,preview
-
 
 " set tabs for file types
 augroup myfiletypes
@@ -269,7 +270,7 @@ set title            " Show the filename in the window titlebar
 set t_Co=256         " 256 colors
 set background=dark  " Light background
 syntax on            " Enable syntax highlighting
-colorscheme grb256   " Set the default colorscheme
+colorscheme 256_darkdot " Set the default colorscheme
 set noerrorbells     " Disable error bells
 set shortmess=atI    " Don't show the Vim intro message
 set number           " Show line numbers
