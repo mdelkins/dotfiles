@@ -24,7 +24,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " color plugins
-Plugin 'noah/vim256-color'
+Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'godlygeek/csapprox'
 
 " ruby plugins
@@ -32,14 +32,6 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
-
-" csharp plugins
-Plugin 'OrangeT/vim-csharp'
-Plugin 'OmniSharp/omnisharp-vim'
-
-" exlir plugins
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'mattreduce/vim-mix'
 
 " javascript
 Plugin 'pangloss/vim-javascript'
@@ -50,9 +42,13 @@ Plugin 'posva/vim-vue'
 " typescript
 Plugin 'leafgarland/typescript-vim'
 Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'ianks/vim-tsx'
 
 " handlebars
 Plugin 'mustache/vim-mustache-handlebars'
+
+" scss
+Plugin 'gcorne/vim-sass-lint'
 
 " editor plugins
 Plugin 'duff/vim-scratch'
@@ -125,9 +121,6 @@ syntax on
 filetype plugin indent on
 filetype plugin on
 
-let g:OmniSharp_selector_ui = 'ctrlp'
-let g:OmniSharp_timeout = 1
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_javascript_checkers = ['jsxhint']
 let g:mustache_abbreviations = 1
 let jshint2_read = 1
@@ -135,6 +128,9 @@ let jshint2_save = 1
 let jshint2_close = 0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:syntastic_sass_checkers=["sasslint"]
+let g:syntastic_scss_checkers=["scsslint"]
+let g:sass_lint_config = '.scss-lint.yml'
 
 set noshowmatch
 set completeopt=longest,menuone,preview
@@ -163,25 +159,6 @@ augroup myfiletypes
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd! FileType mkd setlocal syn=off
 
-  "show type information automatically when the cursor stops moving
-  autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-
-  "The following commands are contextual, based on the current cursor position.
-  autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
-  autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
-  autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
-  autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
-  autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
-
-  "finds members in the current buffer
-  autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
-
-  "cursor can be anywhere on the line containing an issue
-  autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
-  autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
-  autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
-  autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
-
 augroup END
 
 " load vimrc from current directory and disable unsafe commands in them
@@ -203,16 +180,14 @@ nmap <silent> <leader>s :set spell!<cr>
 map  <leader>ac  :sp app/controllers/application_controller.rb<cr>
 map  <leader>bb  :!bundle install<cr>
 map  <leader>gst :Gstatus<cr>
-map  <leader>ga  :CtrlP app/assets<cr>
-map  <leader>gb  :CtrlP app/behaviors<cr>
 map  <leader>gc  :CtrlP app/controllers<cr>
 map  <leader>gd  :CtrlP app/commands<cr>
 map  <leader>gg  :topleft 100 :split Gemfile<cr>
-map  <leader>gl  :CtrlP lib<cr>
+map  <leader>gl  :CtrlP app/lib<cr>
 map  <leader>gm  :CtrlP app/models<cr>
-map  <leader>gp  :CtrlP app/javascript/packs<cr>
-map  <leader>gr  :topleft :split config/routes.rb<cr>
+map  <leader>gp  :CtrlP app/presenters<cr>
 map  <leader>gs  :CtrlP app/services<cr>
+map  <leader>gr  :topleft :split config/routes.rb<cr>
 map  <leader>gv  :CtrlP app/views<cr>
 
 nnoremap <c-j> <c-w>j
@@ -222,26 +197,6 @@ nnoremap <c-l> <c-w>l
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 imap <c-l> <space>=><space>
-
-" Contextual code actions (requires CtrlP or unite.vim)
-nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
-" Run code actions with text selected in visual mode to extract method
-vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
-
-" Force OmniSharp to reload the solution. Useful when switching branches etc.
-nnoremap <leader>rl :OmniSharpReloadSolution<cr>
-nnoremap <leader>cf :OmniSharpCodeFormat<cr>
-" Load the current .cs file to the nearest project
-nnoremap <leader>tp :OmniSharpAddToProject<cr>
-
-" (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
-nnoremap <leader>ss :OmniSharpStartServer<cr>
-nnoremap <leader>sp :OmniSharpStopServer<cr>
-
-" Add syntax highlighting for types and interfaces
-nnoremap <leader>th :OmniSharpHighlightTypes<cr>
-"Don't ask to save when changing buffers (i.e. when jumping to a type definition)
-set hidden
 
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
@@ -268,9 +223,10 @@ set showtabline=2    " Always show the tab bar
 set cmdheight=1      " Set command line height (default)
 set title            " Show the filename in the window titlebar
 set t_Co=256         " 256 colors
-set background=dark  " Light background
+set background=light " Light background
 syntax on            " Enable syntax highlighting
-colorscheme 256_darkdot " Set the default colorscheme
+colorscheme archery " Set the default colorscheme
+highlight Comment cterm=italic gui=italic
 set noerrorbells     " Disable error bells
 set shortmess=atI    " Don't show the Vim intro message
 set number           " Show line numbers
