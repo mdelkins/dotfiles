@@ -131,6 +131,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:syntastic_sass_checkers=["sasslint"]
 let g:syntastic_scss_checkers=["scsslint"]
 let g:sass_lint_config = '.scss-lint.yml'
+let g:snipMate = { 'snippet_version' : 1 }
 
 set noshowmatch
 set completeopt=longest,menuone,preview
@@ -218,18 +219,18 @@ map <leader>n :call RenameFile()<cr>
 " appearance
 " =============================================================================
 
-set scrolloff=5      " Keep more buffer context when scrolling
-set showtabline=2    " Always show the tab bar
-set cmdheight=1      " Set command line height (default)
-set title            " Show the filename in the window titlebar
-set t_Co=256         " 256 colors
-set background=light " Light background
-syntax on            " Enable syntax highlighting
-colorscheme archery " Set the default colorscheme
+set scrolloff=5       " Keep more buffer context when scrolling
+set showtabline=2     " Always show the tab bar
+set cmdheight=1       " Set command line height (default)
+set title             " Show the filename in the window titlebar
+set t_Co=256          " 256 colors
+set background=dark   " Light background
+syntax on             " Enable syntax highlighting
+colorscheme sunbather " Set the default colorscheme
 highlight Comment cterm=italic gui=italic
-set noerrorbells     " Disable error bells
-set shortmess=atI    " Don't show the Vim intro message
-set number           " Show line numbers
+set noerrorbells      " Disable error bells
+set shortmess=atI     " Don't show the Vim intro message
+set number            " Show line numbers
 
 " Use relative line numbers - This is now handled by numbers.vim
 if exists("&relativenumber")
